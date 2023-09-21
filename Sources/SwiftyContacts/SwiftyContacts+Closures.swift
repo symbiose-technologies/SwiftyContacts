@@ -43,7 +43,9 @@ public func requestAccess(_ completion: @escaping (Result<Bool, Error>) -> Void)
 /// on sucess: returns array of contacts
 /// on error: error information, if an error occurred.
 ///
-public func fetchContacts(keysToFetch: [CNKeyDescriptor] = [CNContactVCardSerialization.descriptorForRequiredKeys()], order: CNContactSortOrder = .none, unifyResults: Bool = true, _ completion: @escaping (Result<[CNContact], Error>) -> Void) {
+public func fetchContacts(keysToFetch: [CNKeyDescriptor] = [CNContactVCardSerialization.descriptorForRequiredKeys()], 
+                          order: CNContactSortOrder = .none, 
+                          unifyResults: Bool = true, _ completion: @escaping (Result<[CNContact], Error>) -> Void) {
     do {
         var contacts: [CNContact] = []
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
@@ -299,21 +301,23 @@ public func deleteGroup(_ group: CNMutableGroup, _ completion: @escaping (Result
     }
 }
 
-/// find the contacts that are members in the specified group.
-/// - Parameters:
-///   - group: The group identifier to be matched.
-///   - keysToFetch: The contact fetch request that specifies the search criteria.
-///   - completion: returns either a success or a failure,
-/// on sucess: Array  of contacts
-/// on error: error information, if an error occurred.
-public func fetchContact(in group: String, keysToFetch: [CNKeyDescriptor] = [CNContactVCardSerialization.descriptorForRequiredKeys()], _ completion: @escaping (Result<[CNContact], Error>) -> Void) {
-    do {
-        let contacts = try fetchContacts(predicate: CNContact.predicateForContactsInGroup(withIdentifier: group), keysToFetch: keysToFetch)
-        completion(.success(contacts))
-    } catch {
-        completion(.failure(error))
-    }
-}
+///// find the contacts that are members in the specified group.
+///// - Parameters:
+/////   - group: The group identifier to be matched.
+/////   - keysToFetch: The contact fetch request that specifies the search criteria.
+/////   - completion: returns either a success or a failure,
+///// on sucess: Array  of contacts
+///// on error: error information, if an error occurred.
+//public func fetchContact(in group: String, keysToFetch: [CNKeyDescriptor] = [CNContactVCardSerialization.descriptorForRequiredKeys()], _ completion: @escaping (Result<[CNContact], Error>) -> Void) {
+//    do {
+//        let contacts = try fetchContacts(
+//            predicate: CNContact.predicateForContactsInGroup(withIdentifier: group),
+//            keysToFetch: keysToFetch)
+//        completion(.success(contacts))
+//    } catch {
+//        completion(.failure(error))
+//    }
+//}
 
 /// Add a new member to a group.
 /// - Parameters:

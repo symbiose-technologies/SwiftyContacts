@@ -2,7 +2,7 @@
 import XCTest
 
 @available(macOS 12.0.0, *)
-final class SwiftyContactsTests: XCTestCase {
+class SwiftyContactsTests: XCTestCase {
     #if compiler(>=5.5) && canImport(_Concurrency)
         func testRequestAccess() async {
             do {

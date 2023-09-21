@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "SwiftyContacts",
     platforms: [
-        .macOS(.v10_13),
-        .iOS(.v11),
+        .macOS(.v12),
+        .iOS(.v13),
     ],
     products: [
         .library(
@@ -22,7 +22,8 @@ let package = Package(
         ),
         .testTarget(
             name: "SwiftyContactsTests",
-            dependencies: ["SwiftyContacts"]
+            dependencies: ["SwiftyContacts"],
+            path: "Tests"
         ),
     ]
 )
